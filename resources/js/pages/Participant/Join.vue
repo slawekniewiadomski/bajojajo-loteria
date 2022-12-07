@@ -14,10 +14,6 @@ const form = useForm( {
 } );
 const priceCapOptions = [
   {
-    label: "20 zł",
-    value: 20,
-  },
-  {
     label: "30 zł",
     value: 30,
   },
@@ -40,33 +36,34 @@ function submit() {
   <n-card class="lottery-card">
     <n-form>
       <p>
-        Wypełnij formularz poniżej, aby dołączyć do losowania.<br>
-        <strong>Uwaga!</strong> po kliknięciu przycisku dołącz, wyświetli się link do twojego wyniku.<br><strong>Zapisz go koniecznie!</strong><br>
-        Po losowaniu (gdy wszyscy się zapiszą) pod linkiem znajdziesz osobę, którą wylosowałeś.
-      </p>
+        Wypełnij formularz poniżej, aby dołączyć do losowania.</p>
+      <p><strong>Uwaga!</strong> po kliknięciu przycisku dołącz, wyświetli się link do twojego wyniku.</p>
+      <p><strong>Zapisz go koniecznie!</strong></p>
+      <p>Po losowaniu (gdy wszyscy się zapiszą) pod linkiem znajdziesz osobę, którą wylosowałeś.</p>
+
       <n-form-item label="Imię:"
-                   :validationStatus="form.errors.name ? 'error' : 'default'"
                    :feedback="form.errors.name"
+                   :validationStatus="form.errors.name ? 'error' : 'default'"
       >
         <n-input v-model:value="form.name"
                  placeholder="Wpisz swoje imię"
         />
       </n-form-item>
       <n-form-item label="Maksymalna kwota jaką chcesz przeznaczyć na prezent (pole anonimowe):"
-                   :validationStatus="form.errors.price_cap ? 'error' : 'default'"
                    :feedback="form.errors.price_cap"
+                   :validationStatus="form.errors.price_cap ? 'error' : 'default'"
       >
-        <n-select :options="priceCapOptions"
+        <n-select v-model:value="form.price_cap"
+                  :options="priceCapOptions"
                   placeholder="Wybierz kwotę"
-                  v-model:value="form.price_cap"
         />
       </n-form-item>
     </n-form>
     <template #action>
-      <n-button type="primary"
+      <n-button html-type="submit"
                 size="large"
                 style="width: 100%"
-                html-type="submit"
+                type="primary"
                 @click="submit"
       >Dołącz!
       </n-button>
