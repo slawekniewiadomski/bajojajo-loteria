@@ -1,10 +1,9 @@
 <script setup>
 import {defineProps} from "vue";
-defineProps(['hash'])
+defineProps(['lotteries'])
 </script>
 
 
 <template>
-Show
-Hello {{ hash }}
+Lotteries index
 </template>

@@ -3,7 +3,7 @@ import { createInertiaApp } from '@inertiajs/inertia-vue3'
 
 
 createInertiaApp( {
-  resolve: name => require( `./Pages/${name}` ),
+  resolve: name => require( `./pages/${name}` ),
   setup( {
            el,
            App,

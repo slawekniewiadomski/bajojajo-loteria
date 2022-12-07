@@ -12,8 +12,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/join', [\App\Http\Controllers\Participant\Create::class, 'join']);
-Route::post('/join', [App\Http\Controllers\Participant\Create::class, 'store']);
-Route::get('/{hash}', [\App\Http\Controllers\Views\Home::class, 'show']);
-Route::get('/', [App\Http\Controllers\Views\Home::class, 'index']);
-
+Route::get('/', [App\Http\Controllers\LotteryController::class, 'index']);
+Route::get('/{lottery:slug}', [\App\Http\Controllers\LotteryController::class, 'show'])->name('lottery.show');
+Route::get('/{lottery:slug}/join', [\App\Http\Controllers\ParticipantController::class, 'join']);
+Route::post('/{lottery:slug}/join', [\App\Http\Controllers\ParticipantController::class, 'create']);
+Route::get('/{lottery:slug}/{participant:hash}', [\App\Http\Controllers\ParticipantController::class, 'show'])->name('participant.show');
